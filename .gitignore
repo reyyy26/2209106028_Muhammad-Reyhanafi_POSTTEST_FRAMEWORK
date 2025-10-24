@@ -44,12 +44,3 @@ coverage/
 *.tar.gz
 *.bak
 auth.json
-
-# ignore vendor and node_modules in any subfolder
-vendor/
-node_modules/
-
-# ignore storage, build and bootstrap cache in any subfolder
-storage/
-public/build/
-bootstrap/cache/
