@@ -540,8 +540,12 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
     public static $classMap = array (
         'App\\Http\\Controllers\\AnimalController' => __DIR__ . '/../..' . '/app/Http/Controllers/AnimalController.php',
         'App\\Http\\Controllers\\ArticleController' => __DIR__ . '/../..' . '/app/Http/Controllers/ArticleController.php',
+        'App\\Http\\Controllers\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/AuthController.php',
         'App\\Http\\Controllers\\ContactController' => __DIR__ . '/../..' . '/app/Http/Controllers/ContactController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\Dashboard\\AnimalController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/AnimalController.php',
+        'App\\Http\\Controllers\\Dashboard\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/DashboardController.php',
+        'App\\Http\\Controllers\\Dashboard\\VeterinaryRecordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/VeterinaryRecordController.php',
         'App\\Http\\Controllers\\VeterinaryRecordController' => __DIR__ . '/../..' . '/app/Http/Controllers/VeterinaryRecordController.php',
         'App\\Models\\Animal' => __DIR__ . '/../..' . '/app/Models/Animal.php',
         'App\\Models\\Article' => __DIR__ . '/../..' . '/app/Models/Article.php',

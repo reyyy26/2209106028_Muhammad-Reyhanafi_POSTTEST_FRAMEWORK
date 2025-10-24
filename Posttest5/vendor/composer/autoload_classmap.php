@@ -8,8 +8,12 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Http\\Controllers\\AnimalController' => $baseDir . '/app/Http/Controllers/AnimalController.php',
     'App\\Http\\Controllers\\ArticleController' => $baseDir . '/app/Http/Controllers/ArticleController.php',
+    'App\\Http\\Controllers\\AuthController' => $baseDir . '/app/Http/Controllers/AuthController.php',
     'App\\Http\\Controllers\\ContactController' => $baseDir . '/app/Http/Controllers/ContactController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
+    'App\\Http\\Controllers\\Dashboard\\AnimalController' => $baseDir . '/app/Http/Controllers/Dashboard/AnimalController.php',
+    'App\\Http\\Controllers\\Dashboard\\DashboardController' => $baseDir . '/app/Http/Controllers/Dashboard/DashboardController.php',
+    'App\\Http\\Controllers\\Dashboard\\VeterinaryRecordController' => $baseDir . '/app/Http/Controllers/Dashboard/VeterinaryRecordController.php',
     'App\\Http\\Controllers\\VeterinaryRecordController' => $baseDir . '/app/Http/Controllers/VeterinaryRecordController.php',
     'App\\Models\\Animal' => $baseDir . '/app/Models/Animal.php',
     'App\\Models\\Article' => $baseDir . '/app/Models/Article.php',

@@ -10,14 +10,13 @@
 
         <div class="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
             <div class="max-w-xl space-y-4">
-                <span class="eyebrow">Artikel</span>
-                <h1 class="font-display text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">Wawasan terbaru untuk mendukung produktivitas kandang Anda.</h1>
-                <p class="text-base text-slate-200/80 sm:text-lg">Kumpulan artikel kurasi tim Nyxx Farm, mulai dari nutrisi, kesehatan ternak, hingga strategi bisnis peternakan.</p>
+                <span class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.4em] text-white/80">Artikel</span>
+                <h1 class="text-3xl font-semibold text-white sm:text-4xl">Wawasan terbaru untuk mendukung produktivitas kandang Anda.</h1>
+                <p class="text-sm text-slate-200/80">Kumpulan artikel kurasi tim Nyxx Farm, mulai dari nutrisi, kesehatan ternak, hingga strategi bisnis peternakan.</p>
 
                 <div class="flex flex-wrap gap-3 text-xs font-semibold uppercase tracking-wide text-slate-200/70">
-                    <span class="meta-pill border-emerald-400/40 bg-emerald-400/10 text-emerald-100/80">Update mingguan</span>
-                    <span class="meta-pill border-slate-400/40 bg-slate-900/70">Ditulis pakar kandang</span>
-                    <span class="meta-pill border-sky-400/40 bg-sky-400/10">Insight praktis</span>
+                    <span class="rounded-full border border-emerald-400/40 bg-emerald-400/10 px-4 py-2">Update mingguan</span>
+                    <span class="rounded-full border border-slate-400/40 bg-slate-900/70 px-4 py-2">Ditulis pakar kandang</span>
                 </div>
             </div>
 
@@ -37,8 +36,8 @@
 
     <section class="panel">
         <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-            <div class="space-y-2">
-                <h2 class="panel-title font-display text-2xl">Cari topik spesifik</h2>
+            <div>
+                <h2 class="panel-title">Cari topik spesifik</h2>
                 <p class="panel-subtitle">Gunakan kombinasi kata kunci dan jumlah artikel per halaman.</p>
             </div>
 
@@ -65,46 +64,46 @@
         </div>
     </section>
 
-    <section class="grid gap-6 lg:grid-cols-2">
+    <section class="grid gap-6">
         <?php $__empty_1 = true; $__currentLoopData = $articles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $article): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-            <article class="panel flex flex-col justify-between gap-6">
-                <div class="space-y-4">
-                    <div class="flex flex-col gap-3">
-                        <div class="flex flex-wrap items-center gap-2 text-xs uppercase tracking-wide text-slate-400">
-                            <span class="meta-pill border-emerald-400/40 bg-emerald-400/10 text-emerald-100/80"><?php echo e($article->category->name ?? 'Umum'); ?></span>
-                            <span><?php echo e($article->published_at ? $article->published_at->format('d M Y') : '-'); ?></span>
+            <article class="panel space-y-4">
+                <div class="flex flex-col gap-2">
+                    <h2 class="text-2xl font-semibold text-white">
+                        <a href="<?php echo e(route('articles.show', $article)); ?>" class="transition hover:text-emerald-300">
+                            <?php echo e($article->title); ?>
+
+                        </a>
+                    </h2>
+
+                    <div class="flex flex-wrap items-center gap-3 text-xs uppercase tracking-wide text-slate-400">
+                        <span>Oleh <?php echo e($article->author ?? 'Tim Nyxx'); ?></span>
+                        <span>•</span>
+                        <span><?php echo e($article->published_at ? $article->published_at->format('d M Y') : '-'); ?></span>
+                        <?php if($article->category): ?>
                             <span>•</span>
-                            <span>Oleh <?php echo e($article->author ?? 'Tim Nyxx'); ?></span>
-                        </div>
-
-                        <h2 class="font-display text-2xl font-semibold text-white">
-                            <a href="<?php echo e(route('articles.show', $article)); ?>" class="transition hover:text-emerald-300">
-                                <?php echo e($article->title); ?>
-
-                            </a>
-                        </h2>
+                            <span class="text-emerald-300">Kategori: <?php echo e($article->category->name); ?></span>
+                        <?php endif; ?>
                     </div>
-
-                    <p class="text-base leading-relaxed text-slate-300">
-                        <?php echo e(\Illuminate\Support\Str::limit($article->excerpt ?? $article->content, 180)); ?>
-
-                    </p>
-
-                    <?php if($article->tags->isNotEmpty()): ?>
-                        <div class="flex flex-wrap gap-2">
-                            <?php $__currentLoopData = $article->tags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <span class="meta-pill border-emerald-400/30 bg-emerald-400/10 text-emerald-100/80">
-                                    <?php echo e($tag->name); ?>
-
-                                </span>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                        </div>
-                    <?php endif; ?>
                 </div>
 
-                <a href="<?php echo e(route('articles.show', $article)); ?>" class="inline-flex items-center gap-2 text-sm font-semibold text-emerald-300 transition hover:text-emerald-200">
-                    <span>Baca selengkapnya</span>
-                    <span aria-hidden="true">→</span>
+                <p class="text-sm leading-relaxed text-slate-300">
+                    <?php echo e(\Illuminate\Support\Str::limit($article->excerpt ?? $article->content, 180)); ?>
+
+                </p>
+
+                <?php if($article->tags->isNotEmpty()): ?>
+                    <div class="flex flex-wrap gap-2">
+                        <?php $__currentLoopData = $article->tags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <span class="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-xs font-semibold text-emerald-200">
+                                <?php echo e($tag->name); ?>
+
+                            </span>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </div>
+                <?php endif; ?>
+
+                <a href="<?php echo e(route('articles.show', $article)); ?>" class="inline-flex items-center text-sm font-medium text-emerald-300 transition hover:text-emerald-200">
+                    Baca selengkapnya →
                 </a>
             </article>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>

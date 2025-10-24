@@ -7,7 +7,6 @@
   <title>Nyxx Farm - <?php echo $__env->yieldContent('title'); ?></title>
   <link rel="preconnect" href="https://fonts.bunny.net">
   <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600,700" rel="stylesheet" />
-  <link href="https://fonts.bunny.net/css?family=clash-display:400,500,600,700" rel="stylesheet" />
   <?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css', 'resources/js/app.js']); ?>
 </head>
 
@@ -32,50 +31,19 @@
             ['label' => 'About', 'route' => 'about', 'active' => 'about'],
             ['label' => 'Contact', 'route' => 'contact.create', 'active' => 'contact.*'],
           ];
-
-          if (Route::has('testimonials')) {
-              $navigation[] = ['label' => 'Testimoni', 'route' => 'testimonials', 'active' => 'testimonials'];
-          }
-
-          if (auth()->check()) {
-              $navigation[] = ['label' => 'Dashboard', 'route' => 'dashboard', 'active' => 'dashboard'];
-
-              if (auth()->user()->can('manage-daily-reports')) {
-                  $navigation[] = ['label' => 'Laporan Harian', 'route' => 'staff.reports.index', 'active' => 'staff.reports.*'];
-              }
-
-              if (auth()->user()->can('manage-veterinary-records')) {
-                  $navigation[] = ['label' => 'Rekam Medis Admin', 'route' => 'doctor.records.index', 'active' => 'doctor.records.*'];
-              }
-          }
         ?>
 
         <nav class="hidden items-center gap-2 text-sm font-medium md:flex">
           <?php $__currentLoopData = $navigation; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <?php if(Route::has($item['route'])): ?>
-              <a
-                href="<?php echo e(route($item['route'])); ?>"
-                class="nav-link <?php echo e(request()->routeIs($item['active']) ? 'border-emerald-400/60 bg-emerald-400/20 text-white shadow-md shadow-emerald-500/30' : ''); ?>"
-              >
-                <?php echo e($item['label']); ?>
+            <a
+              href="<?php echo e(route($item['route'])); ?>"
+              class="nav-link <?php echo e(request()->routeIs($item['active']) ? 'border-emerald-400/60 bg-emerald-400/20 text-white shadow-md shadow-emerald-500/30' : ''); ?>"
+            >
+              <?php echo e($item['label']); ?>
 
-              </a>
-            <?php endif; ?>
+            </a>
           <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </nav>
-
-        <div class="hidden items-center gap-3 md:flex">
-          <?php if(auth()->guard()->check()): ?>
-            <form method="POST" action="<?php echo e(route('logout')); ?>">
-              <?php echo csrf_field(); ?>
-              <button type="submit" class="rounded-xl border border-white/10 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:bg-white/10">Keluar</button>
-            </form>
-          <?php else: ?>
-            <?php if(Route::has('login')): ?>
-              <a href="<?php echo e(route('login')); ?>" class="rounded-xl border border-white/10 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:bg-white/10">Masuk</a>
-            <?php endif; ?>
-          <?php endif; ?>
-        </div>
       </div>
     </header>
 
