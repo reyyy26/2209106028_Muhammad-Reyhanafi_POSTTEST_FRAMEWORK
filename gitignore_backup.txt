@@ -1,0 +1,62 @@
+﻿# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.*
+
+# Composer / PHP
+/vendor/
+# keep composer.lock if you want reproducible installs (optional)
+composer.lock
+
+# Node
+/node_modules
+npm-debug.log
+yarn-error.log
+/public/build
+/dist
+/build
+/public/hot
+/public/storage
+
+# Laravel / PHP cache & storage
+/storage/*
+!/storage/.gitignore
+/bootstrap/cache/*
+/storage/*.key
+
+# IDEs and editors
+/.idea/
+/.vscode/
+/*.sublime-*
+
+# PHPUnit / testing
+.phpunit.result.cache
+.phpunit.cache
+coverage/
+
+# Misc
+*.zip
+*.tar.gz
+*.bak
+auth.json
+# ignore vendor and node_modules in any subfolder
+vendor/
+node_modules/
+
+# ignore storage, build and bootstrap cache in any subfolder
+storage/
+public/build/
+bootstrap/cache/
+
+# explicit ignores for Posttest5 build/cache/storage and vendor/node
+Posttest5/public/build/
+Posttest5/bootstrap/cache/
+Posttest5/storage/
+Posttest5/vendor/
+Posttest5/node_modules/
